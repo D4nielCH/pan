@@ -23,6 +23,15 @@ export class UserService {
     getAllUser(){
         return this.userRepository.find({relations:['userstype']})
     }
+
+    createUser(user: User) {
+        return this.userRepository.save(user).then((user) => user.id);
+    }
+
+    updateUser(user:Partial<User> , id:number) {
+        console.log()
+        return this.userRepository.update(id, user).then((response) => response.affected > 0)
+      }
 }
 
 

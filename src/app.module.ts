@@ -3,10 +3,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './modules/user/user.module';
+import { CourseModule } from './modules/course/course.module';
+import { CourseService } from './modules/course/course.service';
+
 
 @Module({
   imports: [
     UserModule,
+    CourseModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -17,6 +21,7 @@ import { UserModule } from './modules/user/user.module';
       autoLoadEntities:true,
       synchronize: true,
     }),
+    CourseModule,
   ],
   controllers: [AppController],
   providers: [AppService],
